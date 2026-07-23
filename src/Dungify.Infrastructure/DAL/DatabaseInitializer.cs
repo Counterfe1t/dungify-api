@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dungify.Core.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -14,6 +16,8 @@ internal sealed class DatabaseInitializer(IServiceProvider serviceProvider) : IH
         var dbContext = scope.ServiceProvider.GetRequiredService<DungifyDbContext>();
         dbContext.Database.Migrate();
 
+        var passwordHasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher<User>>();
+        var password = passwordHasher.HashPassword(default!, "password");
         var users = await dbContext.Users.ToListAsync(cancellationToken);
         if (users.Count == 0)
         {
@@ -22,12 +26,12 @@ internal sealed class DatabaseInitializer(IServiceProvider serviceProvider) : IH
                 DateTimeOffset.UtcNow,
                 "admin",
                 "admin@dungify.dev",
-                "password"), cancellationToken);
+                password), cancellationToken);
         }
 
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 
     public Task StopAsync(CancellationToken cancellationToken)
-        => throw new NotImplementedException();
+        => Task.CompletedTask;
 }

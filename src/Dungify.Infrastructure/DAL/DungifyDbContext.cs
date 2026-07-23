@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dungify.Infrastructure.DAL;
 
-internal sealed class DungifyDbContext : DbContext
+/// <summary>
+/// To add new migration:
+/// dotnet ef migrations add [<migration-name>] --project ./src/Dungify.Infrastructure/Dungify.Infrastructure.csproj --startup-project ./src/Dungify.Api/Dungify.Api.csproj --output-dir ./DAL/Migrations
+/// </summary>
+internal sealed class DungifyDbContext(DbContextOptions<DungifyDbContext> options) : DbContext(options)
 {
     public required DbSet<User> Users { get; set; }
-
-    public DungifyDbContext(DbContextOptions<DungifyDbContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

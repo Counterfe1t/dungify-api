@@ -23,8 +23,8 @@ internal sealed class Authenticator : IAuthenticator
     public Authenticator(ITimeProvider timeProvider, IOptions<AuthOptions> options)
     {
         _timeProvider = timeProvider;
-        _issuer = options.Value.Issuer ?? "cookaracha-issuer";
-        _audience = options.Value.Audience ?? "cookaracha-audience";
+        _issuer = options.Value.Issuer ?? "dungify-issuer";
+        _audience = options.Value.Audience ?? "dungify-audience";
         _expiry = options.Value.Expiry ?? TimeSpan.FromHours(1);
         _signingCredentials = new SigningCredentials(
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.Value.SigningKey!)),

@@ -5,16 +5,18 @@ namespace Dungify.Core.ValueObjects;
 
 public sealed record UserName
 {
+    private static readonly Regex Regex = new(@"\s+", RegexOptions.Compiled);
+
     public string Value { get; private set; }
 
     public UserName(string value)
     {
-        if (string.IsNullOrWhiteSpace(value) || value.Length is > 30 or < 2)
+        if (string.IsNullOrWhiteSpace(value) || value.Length is > 50 or < 3)
         {
             throw new InvalidUserNameException(value);
         }
 
-        Value = Regex.Replace(value.Trim(), @"\s+", " ");
+        Value = Regex.Replace(value.Trim(), " ");
     }
 
     public static implicit operator string(UserName name)

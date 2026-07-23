@@ -19,9 +19,11 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.ModifiedAt)
             .HasConversion(x => x!.Value, x => new Date(x));
         builder.Property(u => u.Name)
+            .HasMaxLength(50)
             .HasConversion(x => x.Value, x => new UserName(x))
             .IsRequired();
         builder.Property(u => u.Email)
+            .HasMaxLength(50)
             .HasConversion(x => x.Value, x => new Email(x))
             .IsRequired();
         builder.Property(u => u.Password)
