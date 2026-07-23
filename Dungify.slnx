@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Dungify.Api/Dungify.Api.csproj" />
+    <Project Path="src/Dungify.Application/Dungify.Application.csproj" Id="247c3c77-4f7f-46a2-a6a2-bcb84928c824" />
+    <Project Path="src/Dungify.Core/Dungify.Core.csproj" Id="c5565b1f-63ed-452a-ae1b-f45c608e9f48" />
+    <Project Path="src/Dungify.Infrastructure/Dungify.Infrastructure.csproj" Id="9b7b476c-82d3-46e1-a078-3e377efadbc9" />
+  </Folder>
+</Solution>

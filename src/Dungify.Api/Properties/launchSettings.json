@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "Dungify.Api (Kestrel)": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "https://localhost:1337/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "dev"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:1337;http://localhost:2137"
+    }
+  }
+}

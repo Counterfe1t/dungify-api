@@ -1,0 +1,43 @@
+﻿using Dungify.Core.Exceptions;
+using Humanizer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+namespace Dungify.Infrastructure.Middleware;
+
+internal sealed class ExceptionMiddleware(ILogger<ExceptionMiddleware> logger) : IMiddleware
+{
+    private const string ErrorMessageTemplate = "An exception has been thrown: {Message}";
+
+    private record Error(string Code, string Message);
+
+    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+    {
+        try
+        {
+            await next(context);
+        }
+        catch (CustomException exception)
+        {
+            logger.LogError(ErrorMessageTemplate, exception.Message);
+            await HandleExceptionAsync(exception, exception.StatusCode, context);
+        }
+        catch (Exception exception)
+        {
+            logger.LogError(ErrorMessageTemplate, exception.Message);
+            await HandleExceptionAsync(exception, StatusCodes.Status500InternalServerError, context);
+        }
+    }
+
+    private static async Task HandleExceptionAsync(Exception exception, int statusCode, HttpContext context)
+    {
+        var error = exception switch
+        {
+            CustomException => new Error(exception.GetType().Name.Underscore().Replace("_exception", string.Empty), exception.Message),
+            _ => new Error("error", "An unexpected error occurred on the server.")
+        };
+
+        context.Response.StatusCode = statusCode;
+        await context.Response.WriteAsJsonAsync(error);
+    }
+}
