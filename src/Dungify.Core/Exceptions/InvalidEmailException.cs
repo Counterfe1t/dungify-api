@@ -2,7 +2,7 @@
 
 namespace Dungify.Core.Exceptions;
 
-public sealed class InvalidEmailException : CustomException
+internal sealed class InvalidEmailException : CustomException
 {
     public string Email { get; }
 

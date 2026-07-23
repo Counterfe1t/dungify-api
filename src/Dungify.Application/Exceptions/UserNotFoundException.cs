@@ -1,6 +1,7 @@
-﻿using System.Net;
+﻿using Dungify.Core.Exceptions;
+using System.Net;
 
-namespace Dungify.Core.Exceptions;
+namespace Dungify.Application.Exceptions;
 
 public sealed class UserNotFoundException : CustomException
 {

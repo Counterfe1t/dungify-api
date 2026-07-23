@@ -18,8 +18,9 @@ public class UserTests
             Guid.NewGuid(),
             DateTimeOffset.UtcNow,
             "dummy user name",
-            "dummy@cookaracha.net",
-            "dummy password");
+            "dummy@dungify.net",
+            "dummy password",
+            "admin");
 
         // act
         var exception = Record.Exception(() => User.ChangeName(invalidName));
@@ -41,8 +42,9 @@ public class UserTests
             Guid.NewGuid(),
             DateTimeOffset.UtcNow,
             "dummy username",
-            "dummy@cookaracha.net",
-            "dummy password");
+            "dummy@dungify.net",
+            "dummy password",
+            "admin");
 
         // act
         User.ChangeName(newValue);
@@ -64,8 +66,9 @@ public class UserTests
             Guid.NewGuid(),
             DateTimeOffset.UtcNow,
             "dummy user name",
-            "dummy@cookaracha.net",
-            "dummy password");
+            "dummy@dungify.net",
+            "dummy password",
+            "admin");
 
         // act
         var exception = Record.Exception(() => User.ChangeEmail(invalidEmail));
@@ -85,8 +88,9 @@ public class UserTests
             Guid.NewGuid(),
             DateTimeOffset.UtcNow,
             "dummy username",
-            "dummy@cookaracha.net",
-            "dummy password");
+            "dummy@dungify.net",
+            "dummy password",
+            "admin");
 
         // act
         User.ChangeEmail(newValue);
@@ -107,8 +111,9 @@ public class UserTests
             Guid.NewGuid(),
             DateTimeOffset.UtcNow,
             "dummy user name",
-            "dummy@cookaracha.net",
-            "dummy password");
+            "dummy@dungify.net",
+            "dummy password",
+            "admin");
 
         // act
         var exception = Record.Exception(() => User.ChangePassword(invalidPassword));
@@ -127,13 +132,57 @@ public class UserTests
             Guid.NewGuid(),
             DateTimeOffset.UtcNow,
             "dummy username",
-            "dummy@cookaracha.net",
-            "dummy password");
+            "dummy@dungify.net",
+            "dummy password",
+            "admin");
 
         // act
         User.ChangePassword(expectedValue);
 
         // assert
         User.Password.Value.ShouldBe(expectedValue);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("  ")]
+    [InlineData("invalid_role")]
+    public void ChangeRole_RoleIsInvalid_ShouldThrowException(string invalidRole)
+    {
+        // arrange
+        var User = new User(
+            Guid.NewGuid(),
+            DateTimeOffset.UtcNow,
+            "dummy user name",
+            "dummy@dungify.net",
+            "dummy password",
+            "admin");
+
+        // act
+        var exception = Record.Exception(() => User.ChangeRole(invalidRole));
+
+        // assert
+        exception.ShouldNotBeNull();
+        exception.ShouldBeOfType<InvalidRoleException>();
+    }
+
+    [Fact]
+    public void ChangeRole_RoleIsValid_ShouldChangeUserRole()
+    {
+        // arrange
+        var expectedValue = "player";
+        var User = new User(
+            Guid.NewGuid(),
+            DateTimeOffset.UtcNow,
+            "dummy username",
+            "dummy@dungify.net",
+            "dummy password",
+            "admin");
+
+        // act
+        User.ChangeRole(expectedValue);
+
+        // assert
+        User.Role.Value.ShouldBe(expectedValue);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Dungify.Application.Abstractions;
-using Dungify.Core.Exceptions;
+using Dungify.Application.Exceptions;
 using Dungify.Core.Repositories;
 
 namespace Dungify.Application.Commands.Handlers;

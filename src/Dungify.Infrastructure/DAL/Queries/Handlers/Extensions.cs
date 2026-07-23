@@ -14,5 +14,6 @@ internal static class Extensions
             Name = entity.Name,
             Email = entity.Email,
             Password = entity.Password,
+            Role = entity.Role
         };
 }

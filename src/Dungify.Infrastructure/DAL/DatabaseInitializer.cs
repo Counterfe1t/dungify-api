@@ -26,7 +26,8 @@ internal sealed class DatabaseInitializer(IServiceProvider serviceProvider) : IH
                 DateTimeOffset.UtcNow,
                 "admin",
                 "admin@dungify.dev",
-                password), cancellationToken);
+                password,
+                "admin"), cancellationToken);
         }
 
         await dbContext.SaveChangesAsync(cancellationToken);

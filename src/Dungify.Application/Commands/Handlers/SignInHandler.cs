@@ -20,6 +20,6 @@ internal sealed class SignInHandler(
         if (!passwordManager.ValidatePassword(command.Password, user.Password))
             throw new InvalidCredentialsException();
 
-        tokenStorage.Set(authenticator.CreateToken(user.Id));
+        tokenStorage.Set(authenticator.CreateToken(user.Id, user.Role));
     }
 }

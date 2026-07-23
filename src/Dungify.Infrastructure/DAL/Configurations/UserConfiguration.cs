@@ -18,16 +18,22 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
             .IsRequired();
         builder.Property(u => u.ModifiedAt)
             .HasConversion(x => x!.Value, x => new Date(x));
+        builder.HasIndex(u => u.Name).IsUnique();
         builder.Property(u => u.Name)
-            .HasMaxLength(50)
+            .HasMaxLength(30)
             .HasConversion(x => x.Value, x => new UserName(x))
             .IsRequired();
+        builder.HasIndex(u => u.Email).IsUnique();
         builder.Property(u => u.Email)
             .HasMaxLength(50)
             .HasConversion(x => x.Value, x => new Email(x))
             .IsRequired();
         builder.Property(u => u.Password)
             .HasConversion(x => x.Value, x => new Password(x))
+            .IsRequired();
+        builder.Property(u => u.Role)
+            .HasMaxLength(30)
+            .HasConversion(x => x.Value, x => new Role(x))
             .IsRequired();
     }
 }

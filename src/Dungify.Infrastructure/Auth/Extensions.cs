@@ -37,6 +37,10 @@ internal static class Extensions
                 };
             });
 
+        services
+            .AddAuthorizationBuilder()
+            .AddPolicy("admin", policy => policy.RequireRole("admin"));
+
         return services;
     }
 }

@@ -14,6 +14,7 @@ namespace Dungify.Api.Controllers;
 public class UsersController : ControllerBase
 {
     [HttpGet]
+    [Authorize(Policy = "admin")]
     [SwaggerOperation("Get users by query.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -24,6 +25,7 @@ public class UsersController : ControllerBase
         => Ok(await handler.HandleAsync(query));
 
     [HttpGet("{id:guid}")]
+    [Authorize(Policy = "admin")]
     [SwaggerOperation("Get user by ID.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -65,7 +67,6 @@ public class UsersController : ControllerBase
     [SwaggerOperation("Update user.")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Put(
         [FromRoute] Guid id,
@@ -80,7 +81,6 @@ public class UsersController : ControllerBase
     [SwaggerOperation("Delete user.")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(
         [FromRoute] Guid id,

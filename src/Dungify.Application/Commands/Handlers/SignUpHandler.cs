@@ -16,6 +16,7 @@ internal sealed class SignUpHandler(
     {
         var email = new Email(command.Email);
         var name = new UserName(command.Name);
+        var role = new Role(command.Role);
 
         if (await usersRepository.GetAsync(email) is not null)
             throw new EmailAlreadyInUseException(email);
@@ -28,6 +29,7 @@ internal sealed class SignUpHandler(
             timeProvider.UtcNow,
             name,
             email,
-            passwordManager.HashPassword(command.Password)));
+            passwordManager.HashPassword(command.Password),
+            role));
     }
 }

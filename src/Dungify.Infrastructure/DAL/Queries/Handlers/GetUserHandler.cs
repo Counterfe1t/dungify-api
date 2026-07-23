@@ -1,6 +1,6 @@
 ﻿using Dungify.Application.Abstractions;
 using Dungify.Application.DTO;
-using Dungify.Core.Exceptions;
+using Dungify.Application.Exceptions;
 using Dungify.Core.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 

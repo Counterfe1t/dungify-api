@@ -2,7 +2,6 @@
 using Dungify.Application.Exceptions;
 using Dungify.Application.Security;
 using Dungify.Core.Abstractions;
-using Dungify.Core.Exceptions;
 using Dungify.Core.Repositories;
 using Dungify.Core.ValueObjects;
 
@@ -36,6 +35,9 @@ internal sealed class UpdateUserHandler(
 
         if (!string.IsNullOrWhiteSpace(command.Password))
             user.ChangePassword(passwordManager.HashPassword(command.Password));
+
+        if (!string.IsNullOrWhiteSpace(command.Role))
+            user.ChangeRole(command.Role);
 
         user.ChangeModifiedAt(timeProvider.UtcNow);
 

@@ -2,7 +2,7 @@
 
 namespace Dungify.Core.Exceptions;
 
-public sealed class InvalidUserNameException : CustomException
+internal sealed class InvalidUserNameException : CustomException
 {
     public string UserName { get; }
 

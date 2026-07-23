@@ -31,7 +31,7 @@ internal sealed class Authenticator : IAuthenticator
             SecurityAlgorithms.HmacSha256);
     }
 
-    public JwtDto CreateToken(Guid userId)
+    public JwtDto CreateToken(Guid userId, string role)
     {
         var now = _timeProvider.UtcNow.ToLocalTime();
         var expiresAt = now.Add(_expiry);
@@ -40,6 +40,7 @@ internal sealed class Authenticator : IAuthenticator
         {
             new(JwtRegisteredClaimNames.Sub, userId.ToString()),
             new(JwtRegisteredClaimNames.UniqueName, userId.ToString()),
+            new(ClaimTypes.Role, role)
         };
 
         var jwt = new JwtSecurityToken(
