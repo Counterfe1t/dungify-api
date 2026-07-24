@@ -26,7 +26,7 @@ public class UsersController : ControllerBase
 
     [HttpGet("{id:guid}")]
     [Authorize(Policy = "admin")]
-    [SwaggerOperation("Get user by ID.")]
+    [SwaggerOperation("Get user by unique identifier.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]

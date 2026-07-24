@@ -6,6 +6,7 @@ using Dungify.Infrastructure.DAL.Queries;
 using Dungify.Infrastructure.Logging;
 using Dungify.Infrastructure.Middleware;
 using Dungify.Infrastructure.Security;
+using Dungify.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +27,7 @@ public static class Extensions
 
         services.AddSingleton<ExceptionMiddleware>()
             .AddSingleton<ITimeProvider, TimeProvider>()
+            .AddServices()
             .AddHttpContextAccessor()
             .AddCustomLogging()
             .AddDatabase(configuration)
@@ -85,5 +87,4 @@ public static class Extensions
 
         return options;
     }
-
 }
