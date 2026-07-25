@@ -4,9 +4,9 @@ using Dungify.Core.Abstractions;
 
 namespace Dungify.Application.Commands.Handlers;
 
-internal sealed class DiceRollHandler(IDiceRoller diceRoller) : ICommandHandler<DiceRoll, DiceRollDto>
+internal sealed class RollDiceHandler(IDiceRoller diceRoller) : ICommandHandler<RollDice, DiceRollDto>
 {
-    public Task<DiceRollDto> HandleAsync(DiceRoll command)
+    public Task<DiceRollDto> HandleAsync(RollDice command)
     {
         var rolls = diceRoller.Roll(command.Formula);
         var total = rolls.Sum();

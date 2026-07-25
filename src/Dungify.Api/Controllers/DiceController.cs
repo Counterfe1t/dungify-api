@@ -13,12 +13,12 @@ namespace Dungify.Api.Controllers;
 public class DiceController : ControllerBase
 {
     [HttpPost("roll")]
-    [SwaggerOperation("Roll dice using a formula (e.g. '21d100', '37d10').")]
+    [SwaggerOperation("Roll dice using a formula (e.g. '1d100', '3d10').")]
     [ProducesResponseType(typeof(DiceRollDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<ActionResult<DiceRollDto>> Post(
-        [FromBody] DiceRoll command,
-        [FromServices] ICommandHandler<DiceRoll, DiceRollDto> handler)
+        [FromBody] RollDice command,
+        [FromServices] ICommandHandler<RollDice, DiceRollDto> handler)
         => Ok(await handler.HandleAsync(command));
 }
