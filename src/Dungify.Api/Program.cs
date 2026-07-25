@@ -4,7 +4,9 @@ using Dungify.Infrastructure;
 using Dungify.Infrastructure.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.UseSerilog();
+builder.Services.AddHealthChecks();
 builder.Services
     .AddApplication()
     .AddCore()
@@ -12,5 +14,6 @@ builder.Services
     .AddControllers();
 
 var app = builder.Build();
+app.MapHealthChecks("/api/health");
 app.UseInfrastructure();
 app.Run();
