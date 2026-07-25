@@ -16,7 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\Dungify.Core\Dungify.Core.csproj" />
+		<ProjectReference Include="..\..\src\Dungify.Infrastructure\Dungify.Infrastructure.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

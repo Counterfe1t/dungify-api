@@ -3,4 +3,4 @@ using Dungify.Application.DTO;
 
 namespace Dungify.Application.Commands;
 
-public sealed record DiceRoll(string Formula) : ICommand<DiceRollDto>;
+public sealed record RollDice(string Formula) : ICommand<DiceRollDto>;
