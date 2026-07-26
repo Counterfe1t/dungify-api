@@ -2,7 +2,7 @@
 using Dungify.Application.Exceptions;
 using Dungify.Core.Repositories;
 
-namespace Dungify.Application.Commands.Handlers;
+namespace Dungify.Application.Commands.Users.Handlers;
 
 public sealed class DeleteUserHandler(IUsersRepository usersRepository) : ICommandHandler<DeleteUser>
 {

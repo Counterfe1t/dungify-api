@@ -1,7 +1,7 @@
 ﻿using Dungify.Application.Abstractions;
 using System.Text.Json.Serialization;
 
-namespace Dungify.Application.Commands;
+namespace Dungify.Application.Commands.Users;
 
 public sealed record SignUp(
     string Name,

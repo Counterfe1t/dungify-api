@@ -4,7 +4,7 @@ using Dungify.Application.Exceptions;
 using Dungify.Core.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dungify.Infrastructure.DAL.Queries.Handlers;
+namespace Dungify.Infrastructure.DAL.Queries.Users.Handlers;
 
 internal sealed class GetUserHandler(DungifyDbContext dbContext) : IQueryHandler<GetUser, UserDto>
 {

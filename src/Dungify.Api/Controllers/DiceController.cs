@@ -1,5 +1,5 @@
 using Dungify.Application.Abstractions;
-using Dungify.Application.Commands;
+using Dungify.Application.Commands.DiceRolls;
 using Dungify.Application.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
