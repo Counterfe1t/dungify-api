@@ -1,7 +1,7 @@
 ﻿using Dungify.Application.Abstractions;
-using Dungify.Application.Commands;
+using Dungify.Application.Commands.User;
 using Dungify.Application.DTO;
-using Dungify.Infrastructure.DAL.Queries;
+using Dungify.Infrastructure.DAL.Queries.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

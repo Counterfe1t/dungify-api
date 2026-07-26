@@ -1,11 +1,10 @@
 ﻿using Dungify.Application.DTO;
-using Dungify.Core.Entities;
 
-namespace Dungify.Infrastructure.DAL.Queries.Handlers;
+namespace Dungify.Infrastructure.DAL.Queries.User.Handlers;
 
 internal static class Extensions
 {
-    public static UserDto AsDto(this User entity)
+    public static UserDto AsDto(this Core.Entities.User entity)
         => new()
         {
             Id = entity.Id,

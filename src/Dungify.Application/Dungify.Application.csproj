@@ -14,4 +14,8 @@
 		<ProjectReference Include="..\Dungify.Core\Dungify.Core.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Commands\Character\Handlers\" />
+	</ItemGroup>
+
 </Project>

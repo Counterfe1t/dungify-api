@@ -2,7 +2,7 @@ using Dungify.Application.Abstractions;
 using Dungify.Application.DTO;
 using Dungify.Core.Abstractions;
 
-namespace Dungify.Application.Commands.Handlers;
+namespace Dungify.Application.Commands.DiceRoll.Handlers;
 
 internal sealed class RollDiceHandler(IDiceEngine diceRoller) : ICommandHandler<RollDice, DiceRollDto>
 {

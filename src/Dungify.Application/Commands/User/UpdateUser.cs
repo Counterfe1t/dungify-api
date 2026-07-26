@@ -1,6 +1,6 @@
 ﻿using Dungify.Application.Abstractions;
 
-namespace Dungify.Application.Commands;
+namespace Dungify.Application.Commands.User;
 
 public record UpdateUser(
     Guid Id,

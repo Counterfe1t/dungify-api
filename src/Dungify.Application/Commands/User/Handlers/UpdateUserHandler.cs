@@ -5,7 +5,7 @@ using Dungify.Core.Abstractions;
 using Dungify.Core.Repositories;
 using Dungify.Core.ValueObjects;
 
-namespace Dungify.Application.Commands.Handlers;
+namespace Dungify.Application.Commands.User.Handlers;
 
 internal sealed class UpdateUserHandler(
     ITimeProvider timeProvider,

@@ -1,8 +1,9 @@
 ﻿using Dungify.Application.Abstractions;
 using Dungify.Application.DTO;
+using Dungify.Infrastructure.DAL.Queries.User.Handlers;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dungify.Infrastructure.DAL.Queries.Handlers;
+namespace Dungify.Infrastructure.DAL.Queries.User.Handlers;
 
 internal sealed class GetUsersHandler(DungifyDbContext dbContext) : IQueryHandler<GetUsers, IEnumerable<UserDto>>
 {
