@@ -1,9 +1,6 @@
 namespace Dungify.Core.Abstractions;
 
-/// <summary>
-/// Interface for dice rolling using cryptographically secure random number generation.
-/// </summary>
-public interface IDiceRoller
+public interface IDiceEngine
 {
     /// <summary>
     /// Rolls dice according to the provided formula (e.g. "2d100", "3d10").

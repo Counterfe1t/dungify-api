@@ -4,7 +4,7 @@ using Dungify.Core.Abstractions;
 
 namespace Dungify.Application.Commands.Handlers;
 
-internal sealed class RollDiceHandler(IDiceRoller diceRoller) : ICommandHandler<RollDice, DiceRollDto>
+internal sealed class RollDiceHandler(IDiceEngine diceRoller) : ICommandHandler<RollDice, DiceRollDto>
 {
     public Task<DiceRollDto> HandleAsync(RollDice command)
     {

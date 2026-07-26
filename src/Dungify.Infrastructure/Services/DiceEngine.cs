@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Dungify.Infrastructure.Services;
 
-internal sealed class DiceRoller : IDiceRoller
+internal sealed class DiceEngine : IDiceEngine
 {
     private static readonly Regex DiceRollFormulaRegex = new(
         @"^(?<count>\d+)d(?<sides>(?:10|100))$",
@@ -17,12 +17,12 @@ internal sealed class DiceRoller : IDiceRoller
         var rolls = new int[count];
 
         for (int i = 0; i < count; i++)
-            rolls[i] = RollSingleDice(sides);
+            rolls[i] = RollDie(sides);
 
         return rolls;
     }
 
-    private static int RollSingleDice(int sides)
+    private static int RollDie(int sides)
     {
         var randomBytes = new byte[4];
         RandomNumberGenerator.Fill(randomBytes);

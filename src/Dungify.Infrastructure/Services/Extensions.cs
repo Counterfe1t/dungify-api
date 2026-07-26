@@ -6,5 +6,5 @@ namespace Dungify.Infrastructure.Services;
 internal static class Extensions
 {
     public static IServiceCollection AddServices(this IServiceCollection services)
-        => services.AddScoped<IDiceRoller, DiceRoller>();
+        => services.AddScoped<IDiceEngine, DiceEngine>();
 }

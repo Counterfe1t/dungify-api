@@ -5,12 +5,12 @@ using Shouldly;
 
 namespace Dungify.UnitTests.Services;
 
-public class DiceRollerTests
+public class DiceEngineTests
 {
-    private readonly IDiceRoller _cut;
+    private readonly IDiceEngine _cut;
 
-    public DiceRollerTests()
-        => _cut = new DiceRoller();
+    public DiceEngineTests()
+        => _cut = new DiceEngine();
 
     [Theory]
     [InlineData(null)]
